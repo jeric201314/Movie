@@ -1,26 +1,6 @@
 <div class="col-md-4 col-md-offset-4">
-<h2 class="text-center">新增电影</h2>
+<h2 class="text-center">编辑电影</h2>
 
 <hr>
-
-<%= form_for @group do |f|%>
-  Title
-  <br>
-  <%= f.text_field :title %>
-  <br>
-  Director
-  <br>
-  <%= f.text_field :director %>
-  <br>
-  Stars
-  <br>
-  <%= f.text_field :stars %>
-  <br>
-  Synopsis
-  <br>
-  <%= f.text_area :synopsis %>
-  <br>
-
-  <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-<% end %>
+  <%= render "form" %>
 </div>
