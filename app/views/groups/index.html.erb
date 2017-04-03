@@ -11,7 +11,7 @@
         <th> Director </th>
         <th> Stars </th>
         <th> Synopsis </th>
-
+        <th> Creator </th>
       </tr>
     </thead>
 
@@ -23,6 +23,7 @@
         <td> <%= group.director %> </td>
         <td> <%= group.stars %> </td>
         <td> <%= group.synopsis %> </td>
+        <td> <%= group.user.email %> </td>
         <td>
              <%= link_to("Edit", edit_group_path(group), class: "btn btn-default btn-sm") %>
              <%= link_to("Delete", group_path(group),  class: "btn btn-default btn-sm",
