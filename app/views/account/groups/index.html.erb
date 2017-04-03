@@ -1,0 +1,32 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我创建的电影 </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> Title </th>
+        <th> Director </th>
+        <th> Stars </th>
+        <th> Synopsis </th>
+        <th> Reviews Count </th>
+        <th> Last Update </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @groups.each do |group| %>
+        <tr>
+          <td> # </td>
+          <td> <%= link_to(group.title, group_path(group)) %> </td>
+          <td> <%= group.director %> </td>
+          <td> <%= group.stars %> </td>
+          <td> <%= group.synopsis %> </td>
+          <td> <%= group.posts.count %> </td>
+          <td> <%= group.updated_at %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
