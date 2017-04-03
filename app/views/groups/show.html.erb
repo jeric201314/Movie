@@ -7,11 +7,12 @@
     <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right")%>
     <% end %>
   </div>
-  <h2><%= @group.title %></h2>
-  <p><%= @group.director %></p>
-  <p><%= @group.stars %></p>
-  <p><%= @group.synopsis %></p>
-
+    <h2><%= @group.title %></h2>
+  <div class="row">
+    <div class="col-md-4">Director: <%= @group.director %></div>
+    <div class="col-md-4">Stars: <%= @group.stars %></div>
+    <div class="col-md-4">Synopsis: <%= @group.synopsis %></div>
+  </div>
   <table class="table">
     <thead>
       <tr>

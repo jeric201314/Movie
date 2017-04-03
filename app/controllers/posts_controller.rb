@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @group = Group.find(params[:group_id])
     @post = Post.new(post_params)
     @post.group = @group
-    @post.user_id = current_user.id
+    @post.user = current_user
 
     if @post.save
       redirect_to group_path(@group)
