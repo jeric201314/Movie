@@ -22,14 +22,14 @@
         <td> <%= link_to(group.title, group_path(group)) %> </td>
         <td> <%= group.director %> </td>
         <td> <%= group.stars %> </td>
-        <td> <%= group.synopsis %> </td>
+        <td> <%= simple_format(group.synopsis) %> </td>
         <td> <%= group.user.email %> </td>
         <td>
           <% if current_user && current_user == group.user %>
              <%= link_to("Edit", edit_group_path(group), class: "btn btn-default btn-sm") %>
              <%= link_to("Delete", group_path(group),  class: "btn btn-default btn-sm",
                           method: :delete, data: { confirm: "Are you sure?" }) %>
-          <% end %>                
+          <% end %>
         </td>
       </tr>
       <% end %>
