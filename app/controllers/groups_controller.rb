@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :join, :quit]
   before_action :find_group_and_check_permission, only: [:edit, :update, :destroy]
+  before_action :validate_search_key, only: [:search]
+
   def index
     @groups = Group.all
   end
@@ -39,7 +41,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    redirect_to groups_path, alert: "Group deleted"
+    redirect_to groups_path, alert: "Movie deleted"
   end
 
   def join
@@ -66,6 +68,26 @@ class GroupsController < ApplicationController
     end
 
     redirect_to group_path(@group)
+  end
+
+  def search
+    if @query_string.present?
+      search_result = Group.ransack(@search_criteria).result(:distinct => true)
+      @groups = search_result.paginate(:page => params[:page], :per_page => 10 )
+    end
+  end
+
+
+  protected
+
+  def validate_search_key
+    @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+    @search_criteria = search_criteria(@query_string)
+  end
+
+
+  def search_criteria(query_string)
+    { :title_or_director_count => query_string }
   end
 
   private
